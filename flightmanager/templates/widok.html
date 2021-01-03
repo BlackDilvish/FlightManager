@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Raport{% endblock %}
+{% block content %}
+<legend class="border-bottom mb-5 text-center">Dane widoku {{ view }}</legend>
+<table class="table">
+    <thead>
+      <tr>
+        {% for header in headers %}
+          <th scope="col">{{ header }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+        {% for record in records %}
+            <tr>
+                {% for field in record %}
+                    <td>{{ field }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Usuń rekord{% endblock %}
+{% block content %}
+
+{% if admin %}
+<div class="col-lg-4 col-lg-offset-4 text-center" style="margin: 0 auto">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <legend class="border-bottom mb-5">Usuń rekord z tabeli {{ table }}</legend>
+
+        <div class="form-group">
+            {{ form.del_id.label }} <br> {{ form.del_id }} <br>
+            {{ form.submit(class="btn btn-outline-danger") }}
+        </div>
+    </form>
+</div>
+{% else %}
+<h2 style="text-align: center;">Tylko administrator ma dostęp do usuwania rekordów z bazy danych</h2>
+{% endif %}
+
+
+{% endblock content %}

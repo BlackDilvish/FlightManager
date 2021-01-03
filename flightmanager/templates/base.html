@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbars/">
+        <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    </head>
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Menedżer lotów</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dodaj dane</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/insert/uzytkownik_aplikacji">Dodaj użytkownika aplikacji</a></li>
+                <li><a class="dropdown-item" href="/insert/pasazer">Dodaj pasażera</a></li>
+                <li><a class="dropdown-item" href="/insert/steward">Dodaj stewarda</a></li>
+                <li><a class="dropdown-item" href="/insert/pilot">Dodaj pilota</a></li>
+                <li><a class="dropdown-item" href="/insert/lotnisko">Dodaj lotnisko</a></li>
+                <li><a class="dropdown-item" href="/insert/obsluga_lotniska">Dodaj obsługę lotniska</a></li>
+                <li><a class="dropdown-item" href="/insert/samolot">Dodaj samolot</a></li>
+                <li><a class="dropdown-item" href="/insert/lot">Dodaj lot</a></li>
+                <li><a class="dropdown-item" href="/insert/pasazer_w_locie">Dodaj pasażera do lotu</a></li>
+                <li><a class="dropdown-item" href="/insert/steward_w_locie">Dodaj stewarda do lotu</a></li>
+                <li><a class="dropdown-item" href="/insert/bagaz">Dodaj bagaż</a></li>
+                <li><a class="dropdown-item" href="/insert/przedmiot">Dodaj przedmiot</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dane zawarte w bazie</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/raport/uzytkownik_aplikacji">Pokaż użytkowników aplikacji</a></li>
+                <li><a class="dropdown-item" href="/raport/pasazer">Pokaż pasażerów</a></li>
+                <li><a class="dropdown-item" href="/raport/steward">Pokaż stewardów</a></li>
+                <li><a class="dropdown-item" href="/raport/pilot">Pokaż pilotów</a></li>
+                <li><a class="dropdown-item" href="/raport/lotnisko">Pokaż lotniska</a></li>
+                <li><a class="dropdown-item" href="/raport/obsluga_lotniska">Pokaż obsługę lotniska</a></li>
+                <li><a class="dropdown-item" href="/raport/samolot">Pokaż samoloty</a></li>
+                <li><a class="dropdown-item" href="/raport/lot">Pokaż loty</a></li>
+                <li><a class="dropdown-item" href="/raport/pasazer_w_locie">Pokaż pasażerów w lotach</a></li>
+                <li><a class="dropdown-item" href="/raport/steward_w_locie">Pokaż stewardów w lotach</a></li>
+                <li><a class="dropdown-item" href="/raport/bagaz">Pokaż bagaże</a></li>
+                <li><a class="dropdown-item" href="/raport/przedmiot">Pokaż przedmioty</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Zapisy</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/insert/pasazer_w_locie">Zapisz pasażera na lot</a></li>
+                <li><a class="dropdown-item" href="/insert/steward_w_locie">Przydziel stewarda do lotu</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Raporty</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/widok/Dane_pasazerow">Szczegółowe dane o biletach</a></li>
+                <li><a class="dropdown-item" href="/widok/Dane_lotu">Szczegółowe dane o lotach</a></li>
+                <li><a class="dropdown-item" href="/widok/Osoby_wydaly_ponad_200">Pasażerowie którzy wydali ponad 200zł na bilety</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Usuń rekord</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/delete/bagaż">Usuń bagaż</a></li>
+                <li><a class="dropdown-item" href="/delete/przedmiot">Usuń przedmiot</a></li>
+                <li><a class="dropdown-item" href="/delete/pasazer_w_locie">Usuń pasażera z lotu</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <a href="/insert/uzytkownik_aplikacji"><button class="btn btn-outline-primary me-2" type="button">Zarejestuj się</button></a>
+        {% if 'user' not in session %}
+        <a href="/login"><button class="btn btn-outline-success me-2" type="button">Zaloguj się</button></a>
+        {% else %}
+        <a href="/logout"><button class="btn btn-outline-danger me-2" type="button">Wyloguj się</button></a>
+        {% endif %}
+      </nav>
+      {% for message in get_flashed_messages() %}
+        <p style="color:red">{{ message }}</p>
+      {% endfor %}
+      {% block content %}{% endblock %}
+      <script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
+    </body>
+</html>

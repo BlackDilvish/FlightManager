@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Zawartość bazy danych{% endblock %}
+{% block content %}
+<legend class="border-bottom mb-5 text-center">Zawartość tabeli {{ table }}</legend>
+<table class="table">
+    <thead>
+      <tr>
+        {% if table is not in ['steward_w_locie'] %}
+          <th scope="col">ID</th>
+        {% endif %}
+        {% for field in form if field.name is not in ['csrf_token', 'submit'] %}
+          <th scope="col"> {{ field.label }} </th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+        {% for record in records %}
+            <tr>
+                {% for field in record %}
+                    <td>{{ field }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+
+
+
+{% endblock %}
