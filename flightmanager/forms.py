@@ -12,7 +12,7 @@ class UzytkownikAplikacji(FlaskForm):
     login = StringField("Login", validators=[DataRequired()])
     haslo = StringField("Hasło", validators=[DataRequired()])
     saldo = IntegerField("Saldo", validators=[DataRequired()])
-    admin = BooleanField("Admin", validators=[DataRequired()])
+    is_admin = BooleanField("Admin", default=False)
     submit = SubmitField("Dodaj")
 
 class Pasazer(FlaskForm):

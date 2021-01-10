@@ -3,6 +3,17 @@
         <title>{% block title %}{% endblock %}</title>
         <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbars/">
         <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <style>
+          .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+            text-align: center;
+          }
+        </style>
     </head>
     <body>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -79,6 +90,11 @@
         <p style="color:red">{{ message }}</p>
       {% endfor %}
       {% block content %}{% endblock %}
+      <footer class="footer">
+        <div class="container">
+          <span class="text-muted">Gabriel Naleźnik - gabriel.naleznik@fis.agh.edu.pl - Bazy Danych I</span>
+        </div>
+      </footer>
       <script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
     </body>
 </html>

@@ -44,3 +44,22 @@ end;
 $$LANGUAGE 'plpgsql';
 
 CREATE TRIGGER trig_piloci_sa_rozni BEFORE INSERT ON lot FOR EACH ROW EXECUTE PROCEDURE piloci_sa_rozni();
+
+
+CREATE FUNCTION kupno_biletu_mozliwe() RETURNS TRIGGER AS $$
+declare
+    koszty INTEGER;
+	u_id INTEGER;
+	dost_saldo INTEGER;
+begin
+	SELECT koszt INTO koszty FROM lot WHERE lot_id=new.lot_id;
+	SELECT uzytkownik_aplikacji_id INTO u_id FROM pasazer WHERE pasazer_id=new.pasazer_id;
+	SELECT saldo INTO dost_saldo FROM uzytkownik_aplikacji WHERE uzytkownik_aplikacji_id = u_id;
+	IF dost_saldo < koszty THEN
+		RAISE EXCEPTION 'Brak srodkow na koncie uzytkownika aplikacji!';
+	END IF;
+    return new;
+end;
+$$LANGUAGE 'plpgsql';
+
+CREATE TRIGGER trig_kupno_biletu_mozliwe BEFORE INSERT ON pasazer_w_locie FOR EACH ROW EXECUTE PROCEDURE kupno_biletu_mozliwe();
