@@ -1,8 +1,8 @@
 <html>
     <head>
         <title>{% block title %}{% endblock %}</title>
-        <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbars/">
-        <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/navbars/">
+        <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
           .footer {
             position: fixed;
@@ -21,7 +21,7 @@
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav me-auto mb-2 mb-sm-0">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dodaj dane</a>
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Dodaj dane</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/insert/uzytkownik_aplikacji">Dodaj użytkownika aplikacji</a></li>
                 <li><a class="dropdown-item" href="/insert/pasazer">Dodaj pasażera</a></li>
@@ -38,7 +38,7 @@
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dane zawarte w bazie</a>
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Dane zawarte w bazie</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/raport/uzytkownik_aplikacji">Pokaż użytkowników aplikacji</a></li>
                 <li><a class="dropdown-item" href="/raport/pasazer">Pokaż pasażerów</a></li>
@@ -55,14 +55,14 @@
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Zapisy</a>
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Zapisy</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/insert/pasazer_w_locie">Zapisz pasażera na lot</a></li>
                 <li><a class="dropdown-item" href="/insert/steward_w_locie">Przydziel stewarda do lotu</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Raporty</a>
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Raporty</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/widok/Dane_pasazerow">Szczegółowe dane o biletach</a></li>
                 <li><a class="dropdown-item" href="/widok/Dane_lotu">Szczegółowe dane o lotach</a></li>
@@ -70,7 +70,7 @@
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Usuń rekord</a>
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Usuń rekord</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/delete/bagaz">Usuń bagaż</a></li>
                 <li><a class="dropdown-item" href="/delete/przedmiot">Usuń przedmiot</a></li>
@@ -95,6 +95,9 @@
           <span class="text-muted">Gabriel Naleźnik - gabriel.naleznik@fis.agh.edu.pl - Bazy Danych I</span>
         </div>
       </footer>
-      <script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
+	  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>	  
     </body>
 </html>

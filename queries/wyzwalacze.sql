@@ -63,3 +63,28 @@ end;
 $$LANGUAGE 'plpgsql';
 
 CREATE TRIGGER trig_kupno_biletu_mozliwe BEFORE INSERT ON pasazer_w_locie FOR EACH ROW EXECUTE PROCEDURE kupno_biletu_mozliwe();
+
+
+CREATE FUNCTION usun_bagaze_pasazera() RETURNS TRIGGER AS $$
+declare
+	items TEXT DEFAULT '';
+	rec_bagaz RECORD;
+	cur_bagaz CURSOR FOR SELECT * FROM bagaz WHERE bagaz.pasazer_w_locie_id = old.pasazer_w_locie_id;
+	rec_przedmiot RECORD;
+begin
+	OPEN cur_bagaz;
+	LOOP
+		FETCH cur_bagaz into rec_bagaz;
+		EXIT WHEN NOT FOUND;
+
+		for rec_przedmiot in select * from przedmiot where przedmiot.bagaz_id = rec_bagaz.bagaz_id
+		LOOP
+			delete from przedmiot where przedmiot.przedmiot_id = rec_przedmiot.przedmiot_id;
+		END LOOP;
+		delete from bagaz where bagaz.bagaz_id = rec_bagaz.bagaz_id;
+	END LOOP;
+	return old;
+end;
+$$LANGUAGE 'plpgsql';
+
+CREATE TRIGGER trig_usun_bagaze_pasazera BEFORE DELETE ON pasazer_w_locie FOR EACH ROW EXECUTE PROCEDURE usun_bagaze_pasazera();
